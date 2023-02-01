@@ -1,0 +1,21 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/java
+{
+    "name": "Java",
+    "image": "docker.io/bosschaert/rde_dc:3",
+
+    "postCreateCommand": "/bin/bash -c \"aio config set -j ims.contexts.aio-cli-plugin-cloudmanager <<< '$AEM_CM_INTEGRATION'\" && aio config:set cloudmanager_orgid $AEM_CM_ORG_ID && aio config:set cloudmanager_programid $AEM_CM_PROGRAM_ID && aio config:set cloudmanager_environmentid $AEM_CM_ENV_ID && mvn install",
+
+    // Configure tool-specific properties.
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "vscjava.vscode-java-pack",
+                "${containerWorkspaceFolder}/.devcontainer/vsix/rde-ide-0.0.1.vsix"
+            ]
+        }
+    },
+    "containerEnv": {
+        "AEM_EXPERIMENTAL": "TRUE"
+    }
+}

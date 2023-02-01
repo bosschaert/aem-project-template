@@ -1,0 +1,6 @@
+create path (sling:OrderedFolder) /content/dam/mysite
+create path (nt:unstructured) /content/dam/mysite/jcr:content
+set properties on /content/dam/mysite/jcr:content
+  set cq:conf{String} to /conf/mysite
+  set jcr:title{String} to "My Site"
+end
